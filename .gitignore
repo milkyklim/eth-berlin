@@ -1,1 +1,4 @@
-node_modules
+# ignore binaries
+**node_modules
+**generated
+**build
