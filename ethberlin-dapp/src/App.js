@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import ApolloClient, { gql, InMemoryCache } from 'apollo-boost'
-import { ApolloProvider, Query } from 'react-apollo'
+import React, { Component } from 'react';
+import ApolloClient, { gql, InMemoryCache } from 'apollo-boost';
+import { ApolloProvider, Query } from 'react-apollo';
 import {
   Grid,
   LinearProgress,
@@ -10,54 +10,62 @@ import {
   DialogContentText,
   DialogTitle,
   Button,
-} from '@material-ui/core'
-import './App.css'
-import Header from './components/Header'
-import Error from './components/Error'
-import Gravatars from './components/Gravatars'
-import Filter from './components/Filter'
+} from '@material-ui/core';
+import './App.css';
+import Header from './components/Header';
+import Error from './components/Error';
+import Wizards from './components/Wizards';
+import Filter from './components/Filter';
 
 if (!process.env.REACT_APP_GRAPHQL_ENDPOINT) {
-  throw new Error('REACT_APP_GRAPHQL_ENDPOINT environment variable not defined')
+  throw new Error(
+    'REACT_APP_GRAPHQL_ENDPOINT environment variable not defined',
+  );
 }
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
   cache: new InMemoryCache(),
-})
+});
 
-const GRAVATARS_QUERY = gql`
-  query gravatars($where: Gravatar_filter!, $orderBy: Gravatar_orderBy!) {
-    gravatars(first: 100, where: $where, orderBy: $orderBy, orderDirection: asc) {
+const WIZARDS_QUERY = gql`
+  query {
+    wizards(where: { element: 1 }) {
       id
+      tokenId
+      power
       owner
-      displayName
-      imageUrl
+      element
+      costWei
+      blockNumber
     }
   }
-`
+`;
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       withImage: false,
       withName: false,
-      orderBy: 'displayName',
+      orderBy: 'tokenId', // FIXME:
       showHelpDialog: false,
-    }
+    };
   }
 
   toggleHelpDialog = () => {
-    this.setState(state => ({ ...state, showHelpDialog: !state.showHelpDialog }))
-  }
+    this.setState(state => ({
+      ...state,
+      showHelpDialog: !state.showHelpDialog,
+    }));
+  };
 
   gotoQuickStartGuide = () => {
-    window.location.href = 'https://thegraph.com/docs/quick-start'
-  }
+    window.location.href = 'https://thegraph.com/docs/quick-start';
+  };
 
   render() {
-    const { withImage, withName, orderBy, showHelpDialog } = this.state
+    const { withImage, withName, orderBy, showHelpDialog } = this.state;
 
     return (
       <ApolloProvider client={client}>
@@ -66,23 +74,31 @@ class App extends Component {
             <Header onHelp={this.toggleHelpDialog} />
             <Filter
               orderBy={orderBy}
-              withImage={withImage}
+              // withImage={withImage}
               withName={withName}
-              onOrderBy={field => this.setState(state => ({ ...state, orderBy: field }))}
+              onOrderBy={field =>
+                this.setState(state => ({ ...state, orderBy: field }))
+              }
               onToggleWithImage={() =>
-                this.setState(state => ({ ...state, withImage: !state.withImage }))
+                this.setState(state => ({
+                  ...state,
+                  withImage: !state.withImage,
+                }))
               }
               onToggleWithName={() =>
-                this.setState(state => ({ ...state, withName: !state.withName }))
+                this.setState(state => ({
+                  ...state,
+                  withName: !state.withName,
+                }))
               }
             />
             <Grid item>
               <Grid container>
                 <Query
-                  query={GRAVATARS_QUERY}
+                  query={WIZARDS_QUERY}
                   variables={{
                     where: {
-                      ...(withImage ? { imageUrl_starts_with: 'http' } : {}),
+                      // ...(withImage ? { imageUrl_starts_with: 'http' } : {}),
                       ...(withName ? { displayName_not: '' } : {}),
                     },
                     orderBy: orderBy,
@@ -90,12 +106,15 @@ class App extends Component {
                 >
                   {({ data, error, loading }) => {
                     return loading ? (
-                      <LinearProgress variant="query" style={{ width: '100%' }} />
+                      <LinearProgress
+                        variant="query"
+                        style={{ width: '100%' }}
+                      />
                     ) : error ? (
                       <Error error={error} />
                     ) : (
-                      <Gravatars gravatars={data.gravatars} />
-                    )
+                      <Wizards wizards={data.wizards} />
+                    );
                   }}
                 </Query>
               </Grid>
@@ -110,23 +129,27 @@ class App extends Component {
             <DialogTitle id="help-dialog">{'Show Quick Guide?'}</DialogTitle>
             <DialogContent>
               <DialogContentText>
-                We have prepared a quick guide for you to get started with The Graph at
-                this hackathon. Shall we take you there now?
+                We have prepared a quick guide for you to get started with The
+                Graph at this hackathon. Shall we take you there now?
               </DialogContentText>
             </DialogContent>
             <DialogActions>
               <Button onClick={this.toggleHelpDialog} color="primary">
                 Nah, I'm good
               </Button>
-              <Button onClick={this.gotoQuickStartGuide} color="primary" autoFocus>
+              <Button
+                onClick={this.gotoQuickStartGuide}
+                color="primary"
+                autoFocus
+              >
                 Yes, pease
               </Button>
             </DialogActions>
           </Dialog>
         </div>
       </ApolloProvider>
-    )
+    );
   }
 }
 
-export default App
+export default App;

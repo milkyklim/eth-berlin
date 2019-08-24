@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Grid,
   Select,
@@ -7,14 +7,14 @@ import {
   Checkbox,
   createStyles,
   withStyles,
-} from '@material-ui/core'
+} from '@material-ui/core';
 
 const filterStyles = theme =>
   createStyles({
     orderBySelect: {
       marginLeft: theme.spacing.unit,
     },
-  })
+  });
 
 const Filter = ({
   classes,
@@ -27,7 +27,7 @@ const Filter = ({
 }) => (
   <Grid item>
     <Grid container direction="row">
-      <FormControlLabel
+      {/* <FormControlLabel
         control={
           <Checkbox
             checked={withName}
@@ -44,7 +44,7 @@ const Filter = ({
           />
         }
         label="With images"
-      />
+      /> */}
       <FormControlLabel
         control={
           <Select
@@ -52,9 +52,9 @@ const Filter = ({
             value={orderBy}
             onChange={event => onOrderBy && onOrderBy(event.target.value)}
           >
-            <MenuItem value="id">ID</MenuItem>
-            <MenuItem value="imageUrl">Image</MenuItem>
-            <MenuItem value="displayName">Name</MenuItem>
+            <MenuItem value="tokenId">TokenID</MenuItem>
+            <MenuItem value="power">Power</MenuItem>
+            <MenuItem value="element">Element</MenuItem>
             <MenuItem value="owner">Owner</MenuItem>
           </Select>
         }
@@ -63,8 +63,8 @@ const Filter = ({
       />
     </Grid>
   </Grid>
-)
+);
 
-const StyledFilter = withStyles(filterStyles)(Filter)
+const StyledFilter = withStyles(filterStyles)(Filter);
 
-export default StyledFilter
+export default StyledFilter;

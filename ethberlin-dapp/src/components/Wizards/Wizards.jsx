@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Card,
   CardContent,
@@ -8,21 +8,22 @@ import {
   Typography,
   createStyles,
   withStyles,
-} from '@material-ui/core'
+} from '@material-ui/core';
 
-const gravatarStyles = theme =>
+const wizardStyles = theme =>
   createStyles({
     actionArea: {
       maxWidth: 300,
     },
-    image: {
-      height: 150,
-    },
-    displayName: {
+    element: {
       textOverflow: 'ellipsis',
       overflow: 'hidden',
     },
-    id: {
+    power: {
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+    },
+    tokenId: {
       textOverflow: 'ellipsis',
       overflow: 'hidden',
     },
@@ -30,22 +31,26 @@ const gravatarStyles = theme =>
       textOverflow: 'ellipsis',
       overflow: 'hidden',
     },
-  })
+  });
 
-const Gravatar = ({ classes, id, displayName, imageUrl, owner }) => (
+const Wizard = ({ classes, tokenId, power, element, owner }) => (
   <Grid item>
     <Card>
       <CardActionArea className={classes.actionArea}>
-        {imageUrl && (
-          <CardMedia className={classes.image} image={imageUrl} title={displayName} />
-        )}
+        {/* {element && (
+          <CardMedia
+            className={classes.element}
+            image={element}
+            title={power}
+          />
+        )} */}
         <CardContent>
-          <Typography variant="h6" component="h3" className={classes.displayName}>
-            {displayName || '—'}
+          <Typography variant="h6" component="h3" className={classes.power}>
+            {power || '—'}
           </Typography>
-          <Typography color="textSecondary">ID</Typography>
-          <Typography component="p" className={classes.id}>
-            {id}
+          <Typography color="textSecondary">TokenID</Typography>
+          <Typography component="p" className={classes.tokenId}>
+            {tokenId}
           </Typography>
           <Typography color="textSecondary">Owner</Typography>
           <Typography component="p" className={classes.owner}>
@@ -55,32 +60,32 @@ const Gravatar = ({ classes, id, displayName, imageUrl, owner }) => (
       </CardActionArea>
     </Card>
   </Grid>
-)
+);
 
-const StyledGravatar = withStyles(gravatarStyles)(Gravatar)
+const StyledWizard = withStyles(wizardStyles)(Wizard);
 
-const gravatarsStyles = theme =>
+const wizardsStyles = theme =>
   createStyles({
     title: {
       marginTop: theme.spacing.unit * 2,
     },
-  })
+  });
 
-const Gravatars = ({ classes, gravatars }) => (
+const Wizards = ({ classes, wizards }) => (
   <Grid container direction="column" spacing={16}>
     <Grid item>
       <Typography variant="title" className={classes.title}>
-        {gravatars.length} Gravatars
+        {wizards.length} Wizards
       </Typography>
     </Grid>
     <Grid item>
       <Grid container direction="row" spacing={16}>
-        {gravatars.map(gravatar => (
-          <StyledGravatar key={gravatar.id} {...gravatar} />
+        {wizards.map(wizard => (
+          <StyledWizard key={wizard.id} {...wizard} />
         ))}
       </Grid>
     </Grid>
   </Grid>
-)
+);
 
-export default withStyles(gravatarsStyles)(Gravatars)
+export default withStyles(wizardsStyles)(Wizards);
