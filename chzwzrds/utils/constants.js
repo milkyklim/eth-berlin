@@ -10,6 +10,8 @@ module.exports = {
   ELEMENTAL_WIZARD_COST: new bn('70000000000000000'),
   ELEMENTAL_WIZARD_INCREMENT: 1000,
   TENTH_BASIS_POINTS: 100000,
+  // this constants are purely speculative
+  // cause real contracts are not deployed yet!
   ADMISSION_DURATION: 30, // > 0;
   // REVIVAL_DURATION % (ASCENSION_DURATION + FIGHT_DURATION + DUEL_TIMEOUT_DURATION + CULLING_DURATION) == 0;
   REVIVAL_DURATION: 170, // > 0;
@@ -20,5 +22,3 @@ module.exports = {
   SESSIONS_BETWEEN_MOLD_DOUBLIN: 5, // > 0;
   DUEL_TIMEOUT_DURATION: 20, // >= 20
 };
-
-// TODO: check constants
