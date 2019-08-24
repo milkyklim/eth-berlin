@@ -1,0 +1,13 @@
+{
+  "parser": "babel-eslint",
+  "extends": "eslint:recommended",
+  "env": {
+    "mocha": true,
+    "node": true
+  },
+  "globals": {
+    "assert": true,
+    "contract": true,
+    "web3": true
+  }
+}
