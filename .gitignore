@@ -5,6 +5,7 @@
 
 # sensitive
 **.secret
+**.env
 
 # ds
 **.ipynb_checkpoints
