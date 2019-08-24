@@ -14,6 +14,10 @@ const wizardStyles = theme =>
   createStyles({
     actionArea: {
       maxWidth: 300,
+      backgroundColor: '#FFC0CB', // pink
+    },
+    image: {
+      height: 350,
     },
     element: {
       textOverflow: 'ellipsis',
@@ -33,20 +37,23 @@ const wizardStyles = theme =>
     },
   });
 
+const PREFIX =
+  'https://storage.googleapis.com/cheeze-wizards-production/0xec2203e38116f09e21bc27443e063b623b01345a/';
+
 const Wizard = ({ classes, tokenId, power, element, owner }) => (
   <Grid item>
     <Card>
       <CardActionArea className={classes.actionArea}>
-        {/* {element && (
+        {PREFIX + tokenId + '.svg' && (
           <CardMedia
-            className={classes.element}
-            image={element}
-            title={power}
+            className={classes.image}
+            image={PREFIX + tokenId + '.svg'}
+            title={tokenId}
           />
-        )} */}
+        )}
         <CardContent>
           <Typography variant="h6" component="h3" className={classes.tokenId}>
-            {tokenId || '—'}
+            {'Token ID: ' + tokenId}
           </Typography>
           <Typography color="textSecondary">Power</Typography>
           <Typography component="p" className={classes.power}>
