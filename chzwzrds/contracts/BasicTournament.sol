@@ -1003,12 +1003,12 @@ contract BasicTournament is TournamentInterface, TournamentTimeAbstract, WizardC
 
     // Address of the GateKeeper, likely to be a smart contract, but we don't care if it is
     // TODO: Update this address once the Gate Keeper is deployed.
-    address public constant GATE_KEEPER = address(0xF46aEEF279A6d5A411E16D87D3767fDa0cEC320E);
+    address public constant GATE_KEEPER = address(0x34D402F14D58E001D8EfBe6585051BF9706AA064);
 
     // The Wizard Guild contract. This is a variable so subclasses can modify it for
     // testing, but by default it cannot change from this default.
     // TODO: Update this address once the Wizard Guild is deployed.
-    WizardGuildInterface public constant WIZARD_GUILD = WizardGuildInterface(address(0xd3d2Cc1a89307358DB3e81Ca6894442b2DB36CE8));
+    WizardGuildInterface public constant WIZARD_GUILD = WizardGuildInterface(address(0x0B1ba0af832d7C05fD64161E0Db78E85978E8082));
 
     // The Duel Resolver contract
     DuelResolverInterface public duelResolver;
