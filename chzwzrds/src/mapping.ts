@@ -29,6 +29,7 @@ export function handleWizardSummoned(event: WizardSummoned): void {
 
   let cost = wizardPresaleContract.powerToCost(power);
   let owner = event.transaction.from;
+  let blockNumber = event.block.number;
 
   wizard.tokenId = tokenId;
   wizard.element = element;
@@ -40,6 +41,8 @@ export function handleWizardSummoned(event: WizardSummoned): void {
   wizard.costWei = cost
     .div(BigInt.fromI32(1000000))
     .div(BigInt.fromI32(1000000));
+
+  wizard.blockNumber = blockNumber;
 
   wizard.save();
 }

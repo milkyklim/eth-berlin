@@ -5,4 +5,5 @@ type Wizard @entity {
   power: Int!
   costWei: BigInt!  
   owner: Bytes!
+  blockNumber: BigInt! 
 }

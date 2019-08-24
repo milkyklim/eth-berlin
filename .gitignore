@@ -1,4 +1,7 @@
-# ignore binaries
+# binaries
 **node_modules
 **generated
 **build
+
+# sensitive
+**.secret
