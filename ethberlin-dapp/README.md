@@ -1,3 +1,7 @@
+## TL;DR
+
+If everything is done right –- you should only run `yarn && yarn start`. Description below is here for completness only.
+
 ## Getting started
 
 ### Local Development
