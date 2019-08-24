@@ -24,6 +24,7 @@
     "@graphprotocol/graph-ts": "0.13.0",
     "bn.js": "^5.0.0",
     "ganache-cli": "^6.6.0",
-    "truffle": "^5.0.33"
+    "truffle": "^5.0.33",
+    "truffle-hdwallet-provider": "^1.0.17"
   }
 }
