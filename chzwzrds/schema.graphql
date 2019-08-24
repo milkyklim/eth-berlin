@@ -1,0 +1,8 @@
+type Wizard @entity {
+  id: ID!
+  tokenId: Int!
+  element: Int!
+  power: Int!
+  costWei: BigInt!  
+  owner: Bytes!
+}

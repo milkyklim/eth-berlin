@@ -1,4 +1,5 @@
 {
+  "license": "GPL-3.0",
   "dependencies": {
     "@graphprotocol/graph-cli": "^0.14.0"
   }
