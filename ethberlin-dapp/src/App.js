@@ -29,8 +29,8 @@ const client = new ApolloClient({
 });
 
 const WIZARDS_QUERY = gql`
-  query {
-    wizards(where: { element: 1 }) {
+  query wizards($orderBy: Wizard_orderBy!) {
+    wizards(first: 1000, orderBy: $orderBy, orderDirection: asc) {
       id
       tokenId
       power
@@ -75,32 +75,32 @@ class App extends Component {
             <Filter
               orderBy={orderBy}
               // withImage={withImage}
-              withName={withName}
+              // withName={withName}
               onOrderBy={field =>
                 this.setState(state => ({ ...state, orderBy: field }))
               }
-              onToggleWithImage={() =>
-                this.setState(state => ({
-                  ...state,
-                  withImage: !state.withImage,
-                }))
-              }
-              onToggleWithName={() =>
-                this.setState(state => ({
-                  ...state,
-                  withName: !state.withName,
-                }))
-              }
+              // onToggleWithImage={() =>
+              //   this.setState(state => ({
+              //     ...state,
+              //     withImage: !state.withImage,
+              //   }))
+              // }
+              // onToggleWithName={() =>
+              //   this.setState(state => ({
+              //     ...state,
+              //     withName: !state.withName,
+              //   }))
+              // }
             />
             <Grid item>
               <Grid container>
                 <Query
                   query={WIZARDS_QUERY}
                   variables={{
-                    where: {
-                      // ...(withImage ? { imageUrl_starts_with: 'http' } : {}),
-                      ...(withName ? { displayName_not: '' } : {}),
-                    },
+                    // where: {
+                    //   // ...(withImage ? { imageUrl_starts_with: 'http' } : {}),
+                    //   ...(withName ? { displayName_not: '' } : {}),
+                    // },
                     orderBy: orderBy,
                   }}
                 >

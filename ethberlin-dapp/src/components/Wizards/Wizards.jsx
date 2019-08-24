@@ -45,12 +45,12 @@ const Wizard = ({ classes, tokenId, power, element, owner }) => (
           />
         )} */}
         <CardContent>
-          <Typography variant="h6" component="h3" className={classes.power}>
-            {power || '—'}
+          <Typography variant="h6" component="h3" className={classes.tokenId}>
+            {tokenId || '—'}
           </Typography>
-          <Typography color="textSecondary">TokenID</Typography>
-          <Typography component="p" className={classes.tokenId}>
-            {tokenId}
+          <Typography color="textSecondary">Power</Typography>
+          <Typography component="p" className={classes.power}>
+            {power}
           </Typography>
           <Typography color="textSecondary">Owner</Typography>
           <Typography component="p" className={classes.owner}>
@@ -81,7 +81,7 @@ const Wizards = ({ classes, wizards }) => (
     <Grid item>
       <Grid container direction="row" spacing={16}>
         {wizards.map(wizard => (
-          <StyledWizard key={wizard.id} {...wizard} />
+          <StyledWizard key={wizard.tokenId} {...wizard} />
         ))}
       </Grid>
     </Grid>

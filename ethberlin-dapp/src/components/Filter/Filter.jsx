@@ -4,7 +4,7 @@ import {
   Select,
   FormControlLabel,
   MenuItem,
-  Checkbox,
+  // Checkbox,
   createStyles,
   withStyles,
 } from '@material-ui/core';
@@ -18,11 +18,11 @@ const filterStyles = theme =>
 
 const Filter = ({
   classes,
-  onToggleWithName,
-  onToggleWithImage,
+  // onToggleWithName,
+  // onToggleWithImage,
   onOrderBy,
-  withName,
-  withImage,
+  // withName,
+  // withImage,
   orderBy,
 }) => (
   <Grid item>
