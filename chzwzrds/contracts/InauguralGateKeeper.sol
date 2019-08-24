@@ -416,10 +416,10 @@ contract InauguralGateKeeper is AccessControl, WizardConstants, Address, WizardG
 
     // The Wizard guild contract.
     // TODO: Replace with the address of the contract once it's deployed.
-    WizardGuildInterface public constant WIZARD_GUILD = WizardGuildInterface(address(0xd3d2Cc1a89307358DB3e81Ca6894442b2DB36CE8));
+    WizardGuildInterface public constant WIZARD_GUILD = WizardGuildInterface(address(0x0B1ba0af832d7C05fD64161E0Db78E85978E8082));
 
     // The Wizard presale contract.
-    WizardPresaleInterface public constant WIZARD_PRESALE = WizardPresaleInterface(address(0xd8E4C31D8EB7baD28909a3D2E2dCa6AACDaB1563));
+    WizardPresaleInterface public constant WIZARD_PRESALE = WizardPresaleInterface(address(0x871DD7C2B4b25E1Aa18728e9D5f2Af4C4e431f5c));
 
     /// @dev The ratio between the cost of a Wizard (in wei) and the power of the Wizard.
     ///      power = cost / POWER_SCALE
