@@ -20,7 +20,7 @@ export function handleApprovalForAll(event: ApprovalForAll): void {}
 
 export function handleWizardSummoned(event: WizardSummoned): void {
   let wizardPresaleContract = WizardPresale.bind(event.address);
-  let id = event.transaction.hash.toHex();
+  let id = event.logIndex.toHex() + event.transaction.hash.toHex();
 
   let wizard = new Wizard(id);
   let tokenId = event.params.tokenId.toI32();
